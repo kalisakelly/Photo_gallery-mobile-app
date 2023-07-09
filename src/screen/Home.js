@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
 const LOGO_SIZE = 150;
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
   const handleLoginPress = () => {
-    // Handle login button press
+    navigation.navigate('Login');
+
   };
 
   return (
@@ -20,6 +24,9 @@ const HomeScreen = () => {
         </View>
         <Text style={styles.title}>Welcome to My App</Text>
         <Text style={styles.subtitle}>Enjoy your stay!</Text>
+        <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
+        <Text style={styles.buttonText}>Click Me</Text>
+      </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -35,6 +42,17 @@ const styles = StyleSheet.create({
     top: 16,
     right: 16,
     zIndex: 1,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 4,
   },
   content: {
     flex: 1,
